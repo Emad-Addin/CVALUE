@@ -122,12 +122,22 @@
           body: formData
         });
 
-        const result = await response.json();
-        if (response.ok) {
-          statusMsg.textContent = 'Upload successful: ' + (result.message || '');
-        } else {
-          statusMsg.textContent = 'Error: ' + (result.error || 'Something went wrong.');
+        if (!response.ok) {
+          const errorText = await response.text();
+          statusMsg.textContent = 'Server error: ' + errorText;
+          return;
         }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'processed_result.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        statusMsg.textContent = 'File processed and downloaded successfully.';
       } catch (error) {
         statusMsg.textContent = 'Network error: ' + error.message;
       }
