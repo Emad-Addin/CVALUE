@@ -9,6 +9,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
+
     header {
       background-color: #ffffff;
       text-align: center;
@@ -17,15 +18,18 @@
       position: relative;
       z-index: 2;
     }
+
     img.logo {
       width: 200px;
     }
+
     .main {
       position: relative;
       min-height: calc(100vh - 100px);
       background: url('Background.png') no-repeat center center fixed;
       background-size: cover;
     }
+
     .main::before {
       content: '';
       position: absolute;
@@ -36,6 +40,7 @@
       background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
       z-index: 1;
     }
+
     .content {
       position: relative;
       z-index: 2;
@@ -48,6 +53,7 @@
       color: #fff;
       text-align: center;
     }
+
     .description {
       max-width: 800px;
       background-color: rgba(0, 0, 0, 0.6);
@@ -57,14 +63,17 @@
       line-height: 1.6;
       font-size: 18px;
     }
+
     .upload-section {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 20px 30px;
       border-radius: 10px;
     }
+
     input[type="file"] {
       margin-top: 10px;
     }
+
     button {
       margin-top: 15px;
       padding: 10px 20px;
@@ -75,6 +84,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #6a6aff;
     }
@@ -105,7 +115,7 @@
     async function uploadFile() {
       const fileInput = document.getElementById('csvFile');
       const statusMsg = document.getElementById('statusMsg');
-      
+
       if (!fileInput.files.length) {
         statusMsg.textContent = 'Please choose a file first.';
         return;
@@ -128,6 +138,7 @@
           return;
         }
 
+        // استلام ملف CSV ومعالجته كـ blob ثم تحميله
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
