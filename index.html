@@ -155,12 +155,12 @@
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'processed_result.csv';
+        a.download = 'CValue_Report.pdf';
         document.body.appendChild(a);
         a.click();
         a.remove();
 
-        statusMsg.textContent = 'File processed and downloaded successfully.';
+        statusMsg.textContent = '✅ Report generated and downloaded as PDF.';
       } catch (error) {
         statusMsg.textContent = 'Network error: ' + error.message;
       }
