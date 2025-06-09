@@ -4,6 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAqhcitSUu3zrIfD68IlxMHKD9hWf22Scg",
+  authDomain: "cvalue-be043.firebaseapp.com",
+  projectId: "cvalue-be043",
+  storageBucket: "cvalue-be043.firebasestorage.app",
+  messagingSenderId: "976399551195",
+  appId: "1:976399551195:web:ab3d33edb664a3aac79afe"
+};
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // التحقق من وجود جلسة
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  });
+</script>
+
   <title>CValue</title>
   <style>
     body {
